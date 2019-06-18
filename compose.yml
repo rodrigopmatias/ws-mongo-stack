@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  db:
+    image: mongo:3
+  backend:
+    image: node:10-alpine
+    command: npm run dev
+    working_dir: /app
+    user: "1000"
+    environment:
+      - APP_ADDR=0.0.0.0
+      - APP_PORT=4000
+      - MONGO_URI=mongodb://db/db0
+    ports:
+      - 4000:4000
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - /home:/home
+      - ${PWD}/backend:/app
