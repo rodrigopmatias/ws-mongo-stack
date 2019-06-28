@@ -18,6 +18,7 @@ services:
       - APP_ADDR=0.0.0.0
       - APP_PORT=4000
       - MONGO_URI=mongodb://db/db0
+      - MONGO_URI_TEST=mongodb://db/db0_test
     ports:
       - 4000:4000
       - 4443:4443
