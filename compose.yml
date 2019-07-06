@@ -26,3 +26,17 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /home:/home
       - ${PWD}/backend:/app
+  frontend:
+    image: node:12-alpine
+    command: npm run serve
+    working_dir: /app
+    user: "1000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=4002
+    ports:
+      - 4002:4002
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - /home:/home
+      - ${PWD}/frontend:/app
